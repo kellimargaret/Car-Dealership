@@ -21,9 +21,11 @@
       });
 
 // Home Page - Results/Post
-    $app->get("/New_Car", function() use ($app) {
-        return $app['twig']->render('New_Car.html.twig', array('cars' => Car::getAll()));
-    });
+  $app->post("/New_Car", function() use ($app) {
+      $car = new Car($_POST['make_model'], $_POST['price'], $_POST['miles'], $_POST['picture']);
+      $car->save();
+      return $app ['twig']->render('New_Car.html.twig', array('newcar' => $car));
+  });
 
 
 /* Create objects for the Car class, and store the worth buying array while
@@ -47,11 +49,7 @@
 
 
 
-      // $app->post("/New_Car", function() use ($app) {
-      //     $car = new Car($_POST['make_model'], $_POST['price'], $_POST['miles'], $_POST['pictiure']);
-      //     $car-> save();
-      //     return $app ['twig']->render('New_Car.html.twig', array('newcar' => $car));
-      // });
+
 
 
     return $app;
