@@ -1,0 +1,22 @@
+/* GENERAL */
+
+body {
+  background-color: none;
+}
+
+/* RESULT STYLES*/
+
+ul li {
+  list-style: none;
+}
+
+img {
+  max-width: 200px;
+  padding: 5px;
+}
+
+/* FORM STYLES */
+
+input.form-control {
+  width: 15%;
+}
