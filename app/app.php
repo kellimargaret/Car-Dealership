@@ -12,7 +12,6 @@
       });
 
     $app->get("/car_results", function() use($app) {
-        return $app['twig']->render('cars_matching_search.html.twig');
         $first_car = new Car("2014 Porsche 911", 7864, 114991, "images/porsche.jpg");
         $second_car = new Car("2011 Ford F450", 14000, 55995, "images/ford.jpeg");
         $third_car = new Car("2013 Lexus RX 350", 20000, 44700, "images/lexus.jpg");
@@ -25,22 +24,8 @@
             }
         };
 
-        $output = "";
-        foreach ($cars_matching_search as $car)
-        {
-            $new_price = $car->getPrice();
-            $miles = $car->getMiles();
-            $make_model = $car->getMake_Model();
-            $picture = $car->getPicture();
-            $output = $output . "
-                    <li> $make_model </li>
-                    <li> <img src='$picture'></li>
-                    <ul>
-                          <li> $$new_price </li>
-                          <li> $miles </li>
-                    </ul>
-                    ";
-        }
+        return $app['twig']->render('cars_matching_search.html.twig', array('cars' => $cars_matching_search));
+
       });
 
 
