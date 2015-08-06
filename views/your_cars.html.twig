@@ -4,18 +4,22 @@
 </head>
 <body>
     <h1>Your Cars!</h1>
+
     {% if cars is not empty %}
-        <p>Here are all your cars:</p>
-        <ul>
-            {% for car in cars %}
-                <p>{{ newcar.getMake_Model }}</p>
-                <p>{{ newcar.getPrice }}</p>
-                <p>{{ newcar.getMiles }}</p>
-                <p><img src="{{ newcar.getPicture }}"></p>
-                <p><a href='/'>Return to Home Page.</a></p>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    <p>Here are all your cars:</p>
+    <ul>
+        {% for car in cars %}
+        <p>{{ car.getMake_Model }}</p>
+        <p>{{ car.getPrice }}</p>
+        <p>{{ car.getMiles }}</p>
+        <p><img src="{{ car.getPicture }}"></p>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+    <p><a href='/'>Return to Home Page.</a></p>
+</body>
+</html>
     <p><a href='/'>Return to Home Page.</a></p>
 </body>
 </html>
