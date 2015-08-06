@@ -9,9 +9,10 @@
 
     $app->get("/", function()  use ($app) {
         return $app['twig']->render('cars.html.twig');
-    });
+      });
 
-    $app->get("/car_results", function() {
+    $app->get("/car_results", function() use($app) {
+        return $app['twig']->render('cars_matching_search.html.twig');
         $first_car = new Car("2014 Porsche 911", 7864, 114991, "images/porsche.jpg");
         $second_car = new Car("2011 Ford F450", 14000, 55995, "images/ford.jpeg");
         $third_car = new Car("2013 Lexus RX 350", 20000, 44700, "images/lexus.jpg");
@@ -22,7 +23,8 @@
             if ($car->worthBuying($_GET["price"], $_GET["miles"])) {
                 array_push($cars_matching_search, $car);
             }
-        }
+        };
+
         $output = "";
         foreach ($cars_matching_search as $car)
         {
@@ -37,30 +39,9 @@
                           <li> $$new_price </li>
                           <li> $miles </li>
                     </ul>
-        ";
+                    ";
         }
-        if (empty($cars_matching_search))
-        {
-            $output = 'We have no cars for you!';
-        }
-        return "
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <title>Your Car Dealership's Homepage</title>
-                <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-            </head>
-            <body>
-                <div class='container'>
-                    <h1>Your Car Dealership</h1>
-                    <ul>
-                        $output
-                    </ul>
-                </div>
-            </body>
-            </html>
-        ";
-    });
+      });
 
 
 

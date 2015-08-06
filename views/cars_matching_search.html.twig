@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Car Dealership's Homepage</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+</head>
+<body>
+    <div class='container'>
+        <h1>Your Car Dealership</h1>
+        {% if cars is not empty %}
+        <ul>
+            {% for car in cars %}
+                <li>{{ car.getMiles }}</li>
+                <li>{{ car.getPrice }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Sorry! We have no cars for you.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
