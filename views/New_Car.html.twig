@@ -4,7 +4,10 @@
 </head>
 <body>
     <h1>Your car has been added!</h1>
-    <p>{{ newtask.getDescription }}</p>
+    <p>{{ newcar.getMake_Model }}</p>
+    <p>{{ newcar.getPrice }}</p>
+    <p>{{ newcar.getMiles }}</p>
+    <p><img src="{{ car.getPicture }}"></p>
     <p><a href='/'>View your list of things to do.</a></p>
 </body>
 </html>
