@@ -10,10 +10,11 @@
     }
 
     $app = new Silex\Application();
-
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
         'twig.path' => __DIR__.'/../views'
     ));
+
+    // $app['debug'] = true;
 
 // Home Page - Search
     $app->get("/", function()  use ($app) {
@@ -26,7 +27,10 @@
       $car->save();
       return $app ['twig']->render('New_Car.html.twig', array('newcar' => $car));
   });
-
+// Your Cars - Results Page
+  $app->get('/your_cars', function() use ($app) {
+    return $app ['twig']->render('your_cars.html.twig');
+});
 
 /* Create objects for the Car class, and store the worth buying array while
    routing the results to cars_matching_search.html.twig */
@@ -46,11 +50,6 @@
 
           return $app['twig']->render('cars_matching_search.html.twig', array('cars' => $cars_matching_search));
       });
-
-
-
-
-
 
     return $app;
 ?>
