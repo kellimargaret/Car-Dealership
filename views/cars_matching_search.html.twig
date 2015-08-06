@@ -6,8 +6,14 @@
 </head>
 <body>
     <div class='container'>
+
+  {# Add if/else statement to determine if any cars matched user search #}
+
         <h1>Your Car Dealership</h1>
         {% if cars is not empty %}
+
+  {# Add for loop to find cars in car array that match search #}      
+
         <ul>
             {% for car in cars %}
                 <li>{{ car.getMake_Model }}</li>

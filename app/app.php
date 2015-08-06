@@ -2,6 +2,8 @@
     require_once __DIR__.'/../vendor/autoload.php';
     require_once __DIR__ . '/../src/Car.php';
 
+// Add Silex and Twig frameworks to help with organization
+
     $app = new Silex\Application();
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
         'twig.path' => __DIR__.'/../views'
@@ -10,6 +12,9 @@
     $app->get("/", function()  use ($app) {
         return $app['twig']->render('cars.html.twig');
       });
+
+/* Create objects for the Car class, and store the worth buying array while
+   routing the results to cars_matching_search.html.twig */
 
     $app->get("/car_results", function() use($app) {
         $first_car = new Car("2014 Porsche 911", 7864, 114991, "images/porsche.jpg");
@@ -25,11 +30,7 @@
         };
 
         return $app['twig']->render('cars_matching_search.html.twig', array('cars' => $cars_matching_search));
-
       });
 
-
-
     return $app;
-
 ?>
